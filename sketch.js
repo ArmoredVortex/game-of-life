@@ -1,8 +1,8 @@
-let sideLength = 20
+let sideLength = 30
 let grid = [];
 let newGrid = [];
 function setup() {
-  var canvas = createCanvas(400,400);
+  var canvas = createCanvas(500,500);
   canvas.parent('sketch-holder');
   background(0);
   createGrid()
@@ -16,13 +16,15 @@ function draw(){
 			} else {
 				fill(0);
 			}
-			rect(x*(canvas.width/sideLength),y*(canvas.height/sideLength),40,40)
+			rect(x*(canvas.width/sideLength),y*(canvas.height/sideLength),canvas.width/sideLength,canvas.height/sideLength)
 		}   
 	}
 	let x = 0
 	let y = 0
 	let sum = 0
-	console.log(countNeighbors(grid,1,1))
+  stroke(255)
+  strokeWeight(5)
+  rect(0,0,canvas.width/canvas.height)
 	updateGrid();
 
 }
@@ -32,7 +34,12 @@ function createGrid(){
 		grid[x] = [];
 		newGrid[x] = [];
 		for(let y = 0; y<width;y++){
-			grid[x][y] = Math.floor(Math.random()*2)
+			let randomval = Math.floor(Math.random()*15)
+      if (randomval == 0) {
+        grid[x][y] = 1
+      } else {
+        grid[x][y] = 0
+      }
 		}   
 	}
 }
